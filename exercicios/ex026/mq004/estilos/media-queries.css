@@ -1,48 +1,83 @@
 @charset "UTF-8";
 
-/*Versão para mobile first*/
+/* Todas as demais midias */
 
-* {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+/* Typical Device Breakpoints
+--------------------------------
+Pequenas telas: até 600px
+Celular: de 600px até 768px
+Tablet: 768px até 992px
+Desktop: 992px até 1200px
+Grandes telas: acima de 1200px
+*/
 
-html {
-    height: 100vh;
+@media print { /*IMPRESSÃO*/
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
 }
 
 body {
-    background: black url(../imagens/back-phone.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-image: url(../imagens/back-print.jpg); /*não precisa*/
 }
 
 main {
-    background-color: white;
-    width: 400px;
-    margin: auto;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px;
+    width: 90vw;
+    border: 2px solid black
 }
 
-h1 {
-    text-align: center;
-    color: white;
-    font-size: 2em;
-    text-shadow: 2px 2px 2px black;
+main::after {
+    content: 'Essa impressão foi muito legal de se fazeer';
+    text-decoration: overline;
 }
 
-img {
-    display: block;
-    margin: auto;
+main h1 {
+    text-shadow: none;
+    color: black;
 }
 
-img#phone {display: block;}
+img#phone {display: none;}
 img#tablet {display: none;}
-img#print {display: none;}
+img#print {display: block;}
 img#pc {display: none;}
 img#tv {display: none;}
+
+@media screen and (min-width: 768px) and(max-width: 992px) /* TABLET*/{
+    body {
+        background-image: url(../imagens/back-tablet.jpg);
+    }
+
+    img#phone {display: none;}
+    img#tablet {display: block;}
+    img#print {display: none;}
+    img#pc {display: none;}
+    img#tv {display: none;}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) /*DESKTOPO*/{
+    body {
+        background-image: url(../imagens/back-pc.jpg);
+    }
+
+    img#phone {display: none;}
+    img#tablet {display: none;}
+    img#print {display: none;}
+    img#pc {display: block;}
+    img#tv {display: none;}
+}
+
+@media screen and (min-width: 1200px) /*GRANDES TELAS*/{
+    body {
+        background-image: url(../imagens/back-tv.jpg);
+    }
+
+    main {
+        width: 700px;
+    }
+
+    img#phone {display: none;}
+    img#tablet {display: none;}
+    img#print {display: none;}
+    img#pc {display: none;}
+    img#tv {display: block;}
+}
